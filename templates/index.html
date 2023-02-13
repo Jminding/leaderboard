@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+    </style>
+</head>
+<body style="height: 100%;">
+    <header style="background-color: deepskyblue;">
+        <h1 style="text-align: center; color: white; font-family: 'Open Sans', sans-serif; font-weight: 600;">Leaderboard</h1>
+    </header>
+    <main style="font-family: 'Open Sans', sans-serif; font-weight: 400;">
+        <table style="width: 100%; text-align: center;">
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+            {% for user in data.keys() %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><a href="/user/{{ user }}">{{ user }}</a></td>
+                    <td>{{ data[user] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <form method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="score">Score:</label>
+            <input type="text" id="score" name="score">
+            <input type="submit" value="Submit">
+        </form>            
+    </main>
+</body>
+</html>
